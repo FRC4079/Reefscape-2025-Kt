@@ -21,7 +21,6 @@ import frc.robot.utils.emu.ElevatorState
 import frc.robot.utils.pingu.LogPingu.log
 import frc.robot.utils.pingu.LogPingu.logs
 import frc.robot.utils.pingu.PathPingu.clearCoralScoringPositions
-import java.sql.Driver
 
 /**
  * Command to align the robot to a specific pose.
@@ -51,10 +50,10 @@ open class AlignToPose(
      * Initializes the command, setting up the controllers and target pose.
      */
     override fun initialize() {
-        addRequirements(Swerve.getInstance())
+        addRequirements(Swerve)
 
         // Update the list of coral scoring positions to the correct side (hopefully)
-        currentPose = Swerve.getInstance().pose2Dfrom3D
+        currentPose = Swerve.pose2Dfrom3D
 
         timer = Timer()
 
@@ -63,9 +62,9 @@ open class AlignToPose(
 
         targetPose =
             if (elevatorToBeSetState == ElevatorState.L4) {
-                moveToClosestCoralScore(offsetSide, Swerve.getInstance().pose2Dfrom3D)!!
+                moveToClosestCoralScore(offsetSide, Swerve.pose2Dfrom3D)!!
             } else {
-                moveToClosestCoralScoreNotL4(offsetSide, Swerve.getInstance().pose2Dfrom3D)!!
+                moveToClosestCoralScoreNotL4(offsetSide, Swerve.pose2Dfrom3D)!!
             }
 
         xController =
@@ -102,15 +101,12 @@ open class AlignToPose(
      * Refer to commit 9c00e5 for the old method of aligning the robot.
      */
     override fun execute() {
-        currentPose = Swerve.getInstance().pose2Dfrom3D
+        currentPose = Swerve.pose2Dfrom3D
         if (
-            ((DriverStation.getAlliance().get() == DriverStation.Alliance.Blue) && DriverStation.isTeleop())
-            ||
+            ((DriverStation.getAlliance().get() == DriverStation.Alliance.Blue) && DriverStation.isTeleop()) ||
             ((DriverStation.getAlliance().get() == DriverStation.Alliance.Red) && DriverStation.isAutonomous())
-            )
-        {
+        ) {
             Swerve
-                .getInstance()
                 .setDriveSpeeds(
                     xController.calculate(currentPose.x),
                     yController.calculate(currentPose.y),
@@ -119,7 +115,6 @@ open class AlignToPose(
                 )
         } else {
             Swerve
-                .getInstance()
                 .setDriveSpeeds(
                     -xController.calculate(currentPose.x),
                     -yController.calculate(currentPose.y),
@@ -149,7 +144,7 @@ open class AlignToPose(
      *
      * @param interrupted Whether the command was interrupted.
      */
-    override fun end(interrupted: Boolean) = Swerve.getInstance().stop()
+    override fun end(interrupted: Boolean) = Swerve.stop()
 
     /**
      * Logs alignment data for debugging purposes.

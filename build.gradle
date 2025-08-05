@@ -1,4 +1,5 @@
 import edu.wpi.first.gradlerio.GradleRIOPlugin
+import groovy.json.JsonSlurper
 
 plugins {
 	id "java"
@@ -48,7 +49,7 @@ deploy {
 
 def deployArtifact = deploy.targets.roborio.artifacts.frcJava
 
-task(replayWatch, type: JavaExec) {
+tasks.register('replayWatch', JavaExec) {
 	mainClass = "org.littletonrobotics.junction.ReplayWatch"
 	classpath = sourceSets.main.runtimeClasspath
 }
@@ -85,7 +86,7 @@ dependencies {
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
 	dokkaHtmlPlugin(libs.dokka.java)
-	def akitJson = new groovy.json.JsonSlurper().parseText(new File(projectDir.getAbsolutePath() + "/vendordeps/AdvantageKit.json").text)
+	def akitJson = new JsonSlurper().parseText(new File(projectDir.getAbsolutePath() + "/vendordeps/AdvantageKit.json").text)
 	annotationProcessor "org.littletonrobotics.akit:akit-autolog:$akitJson.version"
 }
 

@@ -25,7 +25,7 @@ fun List<PhotonModule>.getDecentResultPairs(): List<Pair<PhotonModule, PhotonPip
         .mapNotNull { module ->
             module.allUnreadResults
                 .getOrNull(0)
-                // TODO make sure this isnt rejecting too much maybe lower it idk
+                // TODO make sure this isn't rejecting too much maybe lower it idk
                 ?.takeIf {
                     it.hasTargets() // && module.currentStdDevs.normF() < 0.9
                 }?.let { module to it }

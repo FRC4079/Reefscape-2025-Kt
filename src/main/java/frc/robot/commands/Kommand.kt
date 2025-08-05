@@ -131,7 +131,7 @@ object Kommand {
      * @return An [InstantCommand] that sets the elevator state.
      */
     @JvmStatic
-    fun setElevatorState(state: ElevatorState) = cmd { Elevator.getInstance().state = state }
+    fun setElevatorState(state: ElevatorState) = cmd { Elevator.state = state }
 
     /**
      * Creates a [SequentialCommandGroup] to move the elevator to a specified state.
@@ -142,11 +142,11 @@ object Kommand {
     @JvmStatic
     fun moveElevatorState(state: ElevatorState) =
         SequentialCommandGroup(
-            cmd(Elevator.getInstance()) {
-                Elevator.getInstance().state = state
+            cmd(Elevator) {
+                Elevator.state = state
             },
             waitUntil {
-                abs(Elevator.getInstance().elevatorPosAvg - state.pos) < 0.3
+                abs(Elevator.elevatorPosAvg - state.pos) < 0.3
             },
         )
 
@@ -181,7 +181,7 @@ object Kommand {
      * @return An [InstantCommand] that starts the coral motors.
      */
     @JvmStatic
-    fun startCoralMotors() = cmd { Coral.getInstance().startCoralIntake() }
+    fun startCoralMotors() = cmd { Coral.startCoralIntake() }
 
     /**
      * Creates a [PadDrive] command to control the robot's driving mechanism.
@@ -198,7 +198,7 @@ object Kommand {
      * @return An [InstantCommand] that resets the Pidgey sensor.
      */
     @JvmStatic
-    fun resetPidgey() = cmd { Swerve.getInstance().resetPidgey() }
+    fun resetPidgey() = cmd { Swerve.resetPidgey() }
 
     /**
      * Creates an [InstantCommand] to flip the Pidgey sensor.
@@ -206,7 +206,7 @@ object Kommand {
      * @return An [InstantCommand] that flips the Pidgey sensor.
      */
     @JvmStatic
-    fun flipPidgey() = cmd { Swerve.getInstance().flipPidgey() }
+    fun flipPidgey() = cmd { Swerve.flipPidgey() }
 
     /**
      * Creates an [InstantCommand] to set the teleoperation PID.
@@ -214,7 +214,7 @@ object Kommand {
      * @return An [InstantCommand] that sets the teleoperation PID.
      */
     @JvmStatic
-    fun setTelePid() = cmd { Swerve.getInstance().setTelePID() }
+    fun setTelePid() = cmd { Swerve.setTelePID() }
 
     /**
      * Creates a pathfinding command to move to a specified pose.
@@ -261,7 +261,7 @@ object Kommand {
      * @return An [InstantCommand] that sets the coral intaking state to true.
      */
     @JvmStatic
-    fun hasPieceFalse() = cmd { Coral.getInstance().setHasPiece(false) }
+    fun hasPieceFalse() = cmd { Coral.setHasPiece(false) }
 
     @JvmStatic
     fun coralScoreFalse() = cmd { coralScoring = false }
@@ -299,7 +299,6 @@ object Kommand {
      */
     @JvmStatic
     fun offVision() = cmd { visionDead = false }
-
 
     /**
      * Toggles the vision kill switch state.

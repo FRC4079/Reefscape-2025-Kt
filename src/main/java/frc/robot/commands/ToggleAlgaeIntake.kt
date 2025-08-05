@@ -14,28 +14,31 @@ import frc.robot.utils.emu.ElevatorState
 
 val toggleIntakeAlgae =
     cmd {
-        val elevator = Elevator.getInstance()
         when (algaeCounter) {
             AlgaeCounter.INTAKE ->
-                if (elevatorToBeSetState == ElevatorState.L2) {
-                    algaePivotState = AlgaePivotState.DOWN
-                    coralState = CoralState.ALGAE_INTAKE
-                    elevator.state = ElevatorState.ALGAE_LOW
-                    algaeIntaking = true
-                } else if (elevatorToBeSetState == ElevatorState.L3) {
-                    algaePivotState = AlgaePivotState.DOWN
-                    coralState = CoralState.ALGAE_INTAKE
-                    elevator.state = ElevatorState.ALGAE_HIGH
-                    algaeIntaking = true
-                } else {
-                    algaeCounter = AlgaeCounter.DEFAULT
+                when (elevatorToBeSetState) {
+                    ElevatorState.L2 -> {
+                        algaePivotState = AlgaePivotState.DOWN
+                        coralState = CoralState.ALGAE_INTAKE
+                        Elevator.state = ElevatorState.ALGAE_LOW
+                        algaeIntaking = true
+                    }
+                    ElevatorState.L3 -> {
+                        algaePivotState = AlgaePivotState.DOWN
+                        coralState = CoralState.ALGAE_INTAKE
+                        Elevator.state = ElevatorState.ALGAE_HIGH
+                        algaeIntaking = true
+                    }
+                    else -> {
+                        algaeCounter = AlgaeCounter.DEFAULT
+                    }
                 }
 
             AlgaeCounter.DEFAULT -> {
                 algaePivotState = AlgaePivotState.UP
                 coralState = CoralState.CORAL_INTAKE
                 algaeIntaking = false
-                elevator.state = ElevatorState.DEFAULT
+                Elevator.state = ElevatorState.DEFAULT
             }
         }
         algaeCounter = algaeCounter.next
