@@ -18,12 +18,12 @@ import frc.robot.subsystems.Algae
 import frc.robot.subsystems.Coral
 import frc.robot.subsystems.Elevator
 import frc.robot.subsystems.Swerve
-import frc.robot.utils.emu.Button
 import frc.robot.utils.emu.Direction
 import frc.robot.utils.emu.ElevatorState
-import frc.robot.utils.pingu.Bingu.bind
-import frc.robot.utils.pingu.Bingu.bindings
-import frc.robot.utils.pingu.CommandPingu
+import xyz.malefic.frc.emu.Button
+import xyz.malefic.frc.pingu.Bingu.bind
+import xyz.malefic.frc.pingu.Bingu.bindings
+import xyz.malefic.frc.pingu.CommandPingu
 import java.util.function.BooleanSupplier
 
 /**

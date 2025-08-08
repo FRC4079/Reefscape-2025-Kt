@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj2.command.WaitUntilCommand
 import frc.robot.subsystems.Coral
 import frc.robot.subsystems.Elevator
 import frc.robot.subsystems.Swerve
+import frc.robot.utils.PathPingu.findClosestScoringPosition
+import frc.robot.utils.PathPingu.findClosestScoringPositionNotL4
 import frc.robot.utils.RobotParameters.CoralManipulatorParameters.coralScoring
 import frc.robot.utils.RobotParameters.CoralManipulatorParameters.coralState
 import frc.robot.utils.RobotParameters.LiveRobotValues.visionDead
@@ -21,8 +23,6 @@ import frc.robot.utils.RobotParameters.SwerveParameters.PinguParameters.PATH_CON
 import frc.robot.utils.emu.CoralState
 import frc.robot.utils.emu.Direction
 import frc.robot.utils.emu.ElevatorState
-import frc.robot.utils.pingu.PathPingu.findClosestScoringPosition
-import frc.robot.utils.pingu.PathPingu.findClosestScoringPositionNotL4
 import kotlin.math.abs
 
 /**

@@ -13,9 +13,9 @@ import frc.robot.utils.RobotParameters.AlgaeManipulatorParameters.algaeIntaking
 import frc.robot.utils.RobotParameters.AlgaeManipulatorParameters.algaePivotState
 import frc.robot.utils.RobotParameters.MotorParameters.ALGAE_PIVOT_MOTOR_ID
 import frc.robot.utils.emu.AlgaePivotState
-import frc.robot.utils.pingu.AlertPingu.add
-import frc.robot.utils.pingu.LogPingu.log
-import frc.robot.utils.pingu.LogPingu.logs
+import xyz.malefic.frc.pingu.AlertPingu.add
+import xyz.malefic.frc.pingu.LogPingu.log
+import xyz.malefic.frc.pingu.LogPingu.logs
 
 /**
  * The PivotSubsystem class is a subsystem that interfaces with the arm system to provide control
@@ -91,30 +91,28 @@ object Algae : SubsystemBase() {
         setPivotPos(algaePivotState)
 
         //        setIntakeSpeed(algaePivotState);
-        logs(
-            Runnable {
-                log("Algae/Algae Pivot Motor Position", this.pivotPosValue)
-                log("Algae/Algae State", algaePivotState.toString())
-                log("Algae/IsAlgaeIntaking", algaeIntaking)
-                log("Algae/Algae counter", algaeCounter.toString())
-                log(
-                    "Algae/Disconnected algaeManipulatorMotor " + algaePivotMotor.deviceID,
-                    algaePivotMotor.isConnected,
-                )
-                log(
-                    "Algae/Algae Pivot Stator Current",
-                    algaePivotMotor.statorCurrent.valueAsDouble,
-                )
-                log(
-                    "Algae/Algae Pivot Supply Current",
-                    algaePivotMotor.supplyCurrent.valueAsDouble,
-                )
-                log(
-                    "Algae/Algae Pivot Stall Current",
-                    algaePivotMotor.motorStallCurrent.valueAsDouble,
-                )
-            },
-        )
+        logs {
+            log("Algae/Algae Pivot Motor Position", this.pivotPosValue)
+            log("Algae/Algae State", algaePivotState.toString())
+            log("Algae/IsAlgaeIntaking", algaeIntaking)
+            log("Algae/Algae counter", algaeCounter.toString())
+            log(
+                "Algae/Disconnected algaeManipulatorMotor " + algaePivotMotor.deviceID,
+                algaePivotMotor.isConnected,
+            )
+            log(
+                "Algae/Algae Pivot Stator Current",
+                algaePivotMotor.statorCurrent.valueAsDouble,
+            )
+            log(
+                "Algae/Algae Pivot Supply Current",
+                algaePivotMotor.supplyCurrent.valueAsDouble,
+            )
+            log(
+                "Algae/Algae Pivot Stall Current",
+                algaePivotMotor.motorStallCurrent.valueAsDouble,
+            )
+        }
     }
 
     /**

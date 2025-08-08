@@ -25,13 +25,13 @@ import frc.robot.utils.RobotParameters.SwerveParameters.PinguParameters.DRIVE_PI
 import frc.robot.utils.RobotParameters.SwerveParameters.PinguParameters.STEER_PINGU_AUTO
 import frc.robot.utils.RobotParameters.SwerveParameters.PinguParameters.STEER_PINGU_TELE
 import frc.robot.utils.RobotParameters.SwerveParameters.Thresholds.ENCODER_OFFSET
-import frc.robot.utils.pingu.AlertPingu.add
-import frc.robot.utils.pingu.LogPingu.log
-import frc.robot.utils.pingu.LogPingu.logs
-import frc.robot.utils.pingu.NetworkPingu
-import frc.robot.utils.pingu.Pingu
 import frc.robot.utils.setPingu
 import org.littletonrobotics.junction.networktables.LoggedNetworkNumber
+import xyz.malefic.frc.pingu.AlertPingu.add
+import xyz.malefic.frc.pingu.LogPingu.log
+import xyz.malefic.frc.pingu.LogPingu.logs
+import xyz.malefic.frc.pingu.NetworkPingu
+import xyz.malefic.frc.pingu.Pingu
 
 /** Represents a swerve module used in a swerve drive system.  */
 class SwerveModule(

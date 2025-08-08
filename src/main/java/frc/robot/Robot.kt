@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler
 import frc.robot.commands.Kommand.flipPidgey
 import frc.robot.subsystems.LED
 import frc.robot.subsystems.Swerve
-import frc.robot.utils.LocalADStarAK
 import frc.robot.utils.RobotParameters.FieldParameters.RobotPoses.addCoralPosList
 import frc.robot.utils.RobotParameters.Info.logInfo
 import frc.robot.utils.RobotParameters.LiveRobotValues.LOW_BATTERY_VOLTAGE
@@ -23,6 +22,7 @@ import org.littletonrobotics.junction.Logger
 import org.littletonrobotics.junction.networktables.NT4Publisher
 import org.littletonrobotics.junction.wpilog.WPILOGReader
 import org.littletonrobotics.junction.wpilog.WPILOGWriter
+import xyz.malefic.frc.path.LocalADStarAK
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to

@@ -18,10 +18,10 @@ import frc.robot.utils.RobotParameters.MotorParameters.CORAL_FEEDER_ID
 import frc.robot.utils.RobotParameters.MotorParameters.CORAL_SCORE_ID
 import frc.robot.utils.RobotParameters.MotorParameters.STAR_FEEDER_ID
 import frc.robot.utils.emu.CoralState
-import frc.robot.utils.pingu.AlertPingu.add
-import frc.robot.utils.pingu.LogPingu.log
-import frc.robot.utils.pingu.LogPingu.logs
-import frc.robot.utils.pingu.VoltagePingu.setOutput
+import xyz.malefic.frc.pingu.AlertPingu.add
+import xyz.malefic.frc.pingu.LogPingu.log
+import xyz.malefic.frc.pingu.LogPingu.logs
+import xyz.malefic.frc.pingu.VoltagePingu.setOutput
 
 object Coral : SubsystemBase() {
     private val coralFeederMotor: TalonFX
@@ -147,7 +147,7 @@ object Coral : SubsystemBase() {
             log("Coral/Coral State", coralState.toString())
         }
 
-        coralState.block.run()
+        coralState.block()
     }
 
     /** Stops the coral manipulator motors  */

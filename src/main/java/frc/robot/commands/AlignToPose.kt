@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.Command
 import frc.robot.commands.Kommand.moveToClosestCoralScore
 import frc.robot.commands.Kommand.moveToClosestCoralScoreNotL4
 import frc.robot.subsystems.Swerve
+import frc.robot.utils.PathPingu.clearCoralScoringPositions
 import frc.robot.utils.RobotParameters.ElevatorParameters.elevatorToBeSetState
 import frc.robot.utils.RobotParameters.FieldParameters.RobotPoses.addCoralPosList
 import frc.robot.utils.RobotParameters.LiveRobotValues.visionDead
@@ -18,9 +19,9 @@ import frc.robot.utils.RobotParameters.SwerveParameters.PinguParameters.X_PINGU
 import frc.robot.utils.RobotParameters.SwerveParameters.PinguParameters.Y_PINGU
 import frc.robot.utils.emu.Direction
 import frc.robot.utils.emu.ElevatorState
-import frc.robot.utils.pingu.LogPingu.log
-import frc.robot.utils.pingu.LogPingu.logs
-import frc.robot.utils.pingu.PathPingu.clearCoralScoringPositions
+import frc.robot.utils.profiledPIDController
+import xyz.malefic.frc.pingu.LogPingu.log
+import xyz.malefic.frc.pingu.LogPingu.logs
 
 /**
  * Command to align the robot to a specific pose.
@@ -149,7 +150,7 @@ open class AlignToPose(
     /**
      * Logs alignment data for debugging purposes.
      */
-    fun alignLogs() {
+    fun alignLogs() =
         logs {
             log("AlignToPose/Current Pose", currentPose)
             log("AlignToPose/Target Pose", targetPose)
@@ -159,7 +160,7 @@ open class AlignToPose(
             log("AlignToPose/X Set ", xController.setpoint.position)
             log("AlignToPose/X Goal ", xController.goal.position)
             log("AlignToPose/Rotational Controller Setpoint", rotationalController.atSetpoint())
-            log("AligntoPOse/Heading got from odometry", currentPose.rotation.degrees)
+            log("AlignToPose/Heading got from odometry", currentPose.rotation.degrees)
             log("AlignToPose/Y Controller Setpoint", yController.atSetpoint())
             log("AlignToPose/X Controller Setpoint ", xController.atSetpoint())
             log(
@@ -176,5 +177,4 @@ open class AlignToPose(
             log("AlignToPose/ X Target Pos", targetPose.x)
             log("AlignToPose/ Y Target Pos", targetPose.y)
         }
-    }
 }

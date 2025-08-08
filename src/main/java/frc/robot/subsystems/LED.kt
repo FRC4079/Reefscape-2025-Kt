@@ -11,8 +11,8 @@ import frc.robot.utils.RobotParameters.LEDValues
 import frc.robot.utils.RobotParameters.LiveRobotValues
 import frc.robot.utils.emu.ElevatorState
 import frc.robot.utils.emu.LEDState
-import frc.robot.utils.pingu.LogPingu.log
-import frc.robot.utils.pingu.LogPingu.logs
+import xyz.malefic.frc.pingu.LogPingu.log
+import xyz.malefic.frc.pingu.LogPingu.logs
 import java.lang.Double
 import kotlin.math.max
 import kotlin.math.pow
@@ -116,14 +116,12 @@ object LED : SubsystemBase() {
         for (i in 0..<ledBuffer.length) {
             ledBuffer.setRGB(i, r, g, b)
         }
-        logs(
-            Runnable {
-                log("LED Length", ledBuffer.length)
-                log("LED Color Blue", ledBuffer.getLED(0).blue)
-                log("LED Color Red", ledBuffer.getLED(0).red)
-                log("LED Color Green", ledBuffer.getLED(0).green)
-            },
-        )
+        logs {
+            log("LED Length", ledBuffer.length)
+            log("LED Color Blue", ledBuffer.getLED(0).blue)
+            log("LED Color Red", ledBuffer.getLED(0).red)
+            log("LED Color Green", ledBuffer.getLED(0).green)
+        }
         leds.setData(ledBuffer)
     }
 

@@ -49,15 +49,15 @@ import frc.robot.utils.RobotParameters.SwerveParameters.Thresholds.CANCODER_VAL1
 import frc.robot.utils.RobotParameters.SwerveParameters.Thresholds.CANCODER_VAL9
 import frc.robot.utils.RobotParameters.SwerveParameters.Thresholds.IS_FIELD_ORIENTED
 import frc.robot.utils.getEstimatedPose
-import frc.robot.utils.pingu.LogPingu.log
-import frc.robot.utils.pingu.LogPingu.logs
-import frc.robot.utils.pingu.NetworkPingu
 import frc.robot.utils.updateStdDev
 import frc.robot.utils.updateStdDev3d
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser
 import org.littletonrobotics.junction.networktables.LoggedNetworkNumber
 import org.photonvision.EstimatedRobotPose
 import org.photonvision.targeting.PhotonPipelineResult
+import xyz.malefic.frc.pingu.LogPingu.log
+import xyz.malefic.frc.pingu.LogPingu.logs
+import xyz.malefic.frc.pingu.NetworkPingu
 import java.util.Optional
 import java.util.function.Predicate
 
@@ -229,18 +229,16 @@ object Swerve : SubsystemBase() {
         field.robotPose = poseEstimator.estimatedPosition
         robotPos = poseEstimator.estimatedPosition
 
-        logs(
-            Runnable {
-                log("Swerve/Pidgey Yaw", this.pidgeyYaw)
-                log("Swerve/Pidgey Heading", this.heading)
-                log("Swerve/Pidgey Rotation", pidgey.pitch.valueAsDouble)
-                log("Swerve/Pidgey Roll", pidgey.roll.valueAsDouble)
-                log("Swerve/Pidgey Rotation2D", pidgey.rotation2d.degrees)
-                log("Swerve/Robot Pose", field.robotPose)
-                log("Swerve/Robot Pose 3D", poseEstimator3d.estimatedPosition)
-                log("Swerve/Robot Pose 2D extra", robotPos)
-            },
-        )
+        logs {
+            log("Swerve/Pidgey Yaw", this.pidgeyYaw)
+            log("Swerve/Pidgey Heading", this.heading)
+            log("Swerve/Pidgey Rotation", pidgey.pitch.valueAsDouble)
+            log("Swerve/Pidgey Roll", pidgey.roll.valueAsDouble)
+            log("Swerve/Pidgey Rotation2D", pidgey.rotation2d.degrees)
+            log("Swerve/Robot Pose", field.robotPose)
+            log("Swerve/Robot Pose 3D", poseEstimator3d.estimatedPosition)
+            log("Swerve/Robot Pose 2D extra", robotPos)
+        }
     }
 
     /**
@@ -306,13 +304,11 @@ object Swerve : SubsystemBase() {
         turnSpeed: Double,
         isFieldOriented: Boolean,
     ) {
-        logs(
-            Runnable {
-                log("Swerve/Forward speed", forwardSpeed)
-                log("Swerve/Left speed", leftSpeed)
-                log("Swerve/Turn speed", turnSpeed)
-            },
-        )
+        logs {
+            log("Swerve/Forward speed", forwardSpeed)
+            log("Swerve/Left speed", leftSpeed)
+            log("Swerve/Turn speed", turnSpeed)
+        }
 
         // Converts to a measure that the robot aktualy understands
         var speeds =

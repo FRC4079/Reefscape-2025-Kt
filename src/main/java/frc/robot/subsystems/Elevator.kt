@@ -24,11 +24,11 @@ import frc.robot.utils.RobotParameters.MotorParameters.ELEVATOR_MOTOR_LEFT_ID
 import frc.robot.utils.RobotParameters.MotorParameters.ELEVATOR_MOTOR_RIGHT_ID
 import frc.robot.utils.emu.ElevatorMotor
 import frc.robot.utils.emu.ElevatorState
-import frc.robot.utils.pingu.AlertPingu.add
-import frc.robot.utils.pingu.LogPingu.log
-import frc.robot.utils.pingu.LogPingu.logs
 import frc.robot.utils.setPingu
 import org.littletonrobotics.junction.networktables.LoggedNetworkNumber
+import xyz.malefic.frc.pingu.AlertPingu.add
+import xyz.malefic.frc.pingu.LogPingu.log
+import xyz.malefic.frc.pingu.LogPingu.logs
 import kotlin.math.abs
 
 /**
@@ -208,56 +208,54 @@ object Elevator : SubsystemBase() {
         //    elevatorSetState = currentState;
         setElevatorPosition(this.state)
 
-        logs(
-            Runnable {
-                log(
-                    "Elevator/Elevator Left Position",
-                    elevatorMotorLeft.position.valueAsDouble,
-                )
-                log(
-                    "Elevator/Elevator Right Position",
-                    elevatorMotorRight.position.valueAsDouble,
-                )
-                log(
-                    "Elevator/Elevator Left Set Speed",
-                    elevatorMotorLeft.velocity.valueAsDouble,
-                )
-                log(
-                    "Elevator/Elevator Right Set Speed",
-                    elevatorMotorRight.velocity.valueAsDouble,
-                )
-                log(
-                    "Elevator/Elevator Left Acceleration",
-                    elevatorMotorLeft.acceleration.valueAsDouble,
-                )
-                log(
-                    "Elevator/Elevator Right Acceleration",
-                    elevatorMotorRight.acceleration.valueAsDouble,
-                )
-                log(
-                    "Elevator/Elevator Supply Voltage",
-                    elevatorMotorLeft.supplyVoltage.valueAsDouble,
-                )
-                log(
-                    "Elevator/Elevator Motor Voltage",
-                    elevatorMotorLeft.motorVoltage.valueAsDouble,
-                )
-                log("Elevator/Elevator State", state.toString())
-                log("Elevator/Elevator To Be State", elevatorToBeSetState.toString())
-                log(
-                    "Elevator/Elevator Stator Current",
-                    elevatorMotorLeft.statorCurrent.valueAsDouble,
-                )
-                log(
-                    "Elevator/Elevator Supply Current",
-                    elevatorMotorLeft.supplyCurrent.valueAsDouble,
-                )
-                log(
-                    "Elevator/Elevator Stall Current",
-                    elevatorMotorLeft.motorStallCurrent.valueAsDouble,
-                )
-            },
-        )
+        logs {
+            log(
+                "Elevator/Elevator Left Position",
+                elevatorMotorLeft.position.valueAsDouble,
+            )
+            log(
+                "Elevator/Elevator Right Position",
+                elevatorMotorRight.position.valueAsDouble,
+            )
+            log(
+                "Elevator/Elevator Left Set Speed",
+                elevatorMotorLeft.velocity.valueAsDouble,
+            )
+            log(
+                "Elevator/Elevator Right Set Speed",
+                elevatorMotorRight.velocity.valueAsDouble,
+            )
+            log(
+                "Elevator/Elevator Left Acceleration",
+                elevatorMotorLeft.acceleration.valueAsDouble,
+            )
+            log(
+                "Elevator/Elevator Right Acceleration",
+                elevatorMotorRight.acceleration.valueAsDouble,
+            )
+            log(
+                "Elevator/Elevator Supply Voltage",
+                elevatorMotorLeft.supplyVoltage.valueAsDouble,
+            )
+            log(
+                "Elevator/Elevator Motor Voltage",
+                elevatorMotorLeft.motorVoltage.valueAsDouble,
+            )
+            log("Elevator/Elevator State", state.toString())
+            log("Elevator/Elevator To Be State", elevatorToBeSetState.toString())
+            log(
+                "Elevator/Elevator Stator Current",
+                elevatorMotorLeft.statorCurrent.valueAsDouble,
+            )
+            log(
+                "Elevator/Elevator Supply Current",
+                elevatorMotorLeft.supplyCurrent.valueAsDouble,
+            )
+            log(
+                "Elevator/Elevator Stall Current",
+                elevatorMotorLeft.motorStallCurrent.valueAsDouble,
+            )
+        }
     }
 
     /** Stops the elevator motors  */

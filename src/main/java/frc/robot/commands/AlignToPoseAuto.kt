@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.Command
 import frc.robot.commands.Kommand.moveToClosestCoralScore
 import frc.robot.commands.Kommand.moveToClosestCoralScoreNotL4
 import frc.robot.subsystems.Swerve
+import frc.robot.utils.PathPingu.clearCoralScoringPositions
 import frc.robot.utils.RobotParameters.ElevatorParameters.elevatorToBeSetState
 import frc.robot.utils.RobotParameters.FieldParameters.RobotPoses.addCoralPosList
 import frc.robot.utils.RobotParameters.LiveRobotValues.visionDead
@@ -18,11 +19,11 @@ import frc.robot.utils.RobotParameters.SwerveParameters.PinguParameters.X_PINGU
 import frc.robot.utils.RobotParameters.SwerveParameters.PinguParameters.Y_PINGU
 import frc.robot.utils.emu.Direction
 import frc.robot.utils.emu.ElevatorState
-import frc.robot.utils.pingu.LogPingu.log
-import frc.robot.utils.pingu.LogPingu.logs
-import frc.robot.utils.pingu.NetworkPingu
-import frc.robot.utils.pingu.PathPingu.clearCoralScoringPositions
+import frc.robot.utils.profiledPIDController
 import org.photonvision.PhotonCamera
+import xyz.malefic.frc.pingu.LogPingu.log
+import xyz.malefic.frc.pingu.LogPingu.logs
+import xyz.malefic.frc.pingu.NetworkPingu
 
 class AlignToPoseAuto(
     private val offsetSide: Direction,
@@ -126,30 +127,28 @@ class AlignToPoseAuto(
                 )
             }
         }
-        logs(
-            Runnable {
-                log("AlignToPose/Current Pose", currentPose!!)
-                log("AlignToPose/Target Pose", targetPose!!)
-                log("AlignToPose/Rotational Error", rotationalController!!.positionError)
-                log("AlignToPose/Y Error", yController!!.positionError)
-                log("AlignToPose/X Error ", xController!!.positionError)
-                log("AlignToPose/X Set ", xController!!.setpoint.position)
-                log("AlignToPose/X Goal ", xController!!.goal.position)
-                log("AlignToPose/Rotational Controller Setpoint", rotationalController!!.atSetpoint())
-                log("AlignToPose/Y Controller Setpoint", yController!!.atSetpoint())
-                log("AlignToPose/X Controller Setpoint ", xController!!.atSetpoint())
-                log("AlignToPose/X Set Speed ", xController!!.calculate(currentPose!!.x, targetPose!!.x))
-                log("AlignToPose/Y Set Speed ", yController!!.calculate(currentPose!!.y))
-                log(
-                    "AlignToPose/Rot Set Speed ",
-                    rotationalController!!.calculate(currentPose!!.rotation.degrees),
-                )
-                log("AlignToPose/ X Set Pos", currentPose!!.x)
-                log("AlignToPose/ Y Set Pos", currentPose!!.y)
-                log("AlignToPose/ X Target Pos", targetPose!!.x)
-                log("AlignToPose/ Y Target Pos", targetPose!!.y)
-            },
-        )
+        logs {
+            log("AlignToPose/Current Pose", currentPose!!)
+            log("AlignToPose/Target Pose", targetPose!!)
+            log("AlignToPose/Rotational Error", rotationalController!!.positionError)
+            log("AlignToPose/Y Error", yController!!.positionError)
+            log("AlignToPose/X Error ", xController!!.positionError)
+            log("AlignToPose/X Set ", xController!!.setpoint.position)
+            log("AlignToPose/X Goal ", xController!!.goal.position)
+            log("AlignToPose/Rotational Controller Setpoint", rotationalController!!.atSetpoint())
+            log("AlignToPose/Y Controller Setpoint", yController!!.atSetpoint())
+            log("AlignToPose/X Controller Setpoint ", xController!!.atSetpoint())
+            log("AlignToPose/X Set Speed ", xController!!.calculate(currentPose!!.x, targetPose!!.x))
+            log("AlignToPose/Y Set Speed ", yController!!.calculate(currentPose!!.y))
+            log(
+                "AlignToPose/Rot Set Speed ",
+                rotationalController!!.calculate(currentPose!!.rotation.degrees),
+            )
+            log("AlignToPose/ X Set Pos", currentPose!!.x)
+            log("AlignToPose/ Y Set Pos", currentPose!!.y)
+            log("AlignToPose/ X Target Pos", targetPose!!.x)
+            log("AlignToPose/ Y Target Pos", targetPose!!.y)
+        }
     }
 
     /**

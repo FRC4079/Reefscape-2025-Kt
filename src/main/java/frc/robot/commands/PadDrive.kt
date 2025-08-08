@@ -7,8 +7,8 @@ import frc.robot.utils.RobotParameters.MotorParameters.MAX_ANGULAR_SPEED
 import frc.robot.utils.RobotParameters.MotorParameters.MAX_SPEED
 import frc.robot.utils.RobotParameters.SwerveParameters.Thresholds.X_DEADZONE
 import frc.robot.utils.RobotParameters.SwerveParameters.Thresholds.Y_DEADZONE
-import frc.robot.utils.pingu.LogPingu.log
-import frc.robot.utils.pingu.LogPingu.logs
+import xyz.malefic.frc.pingu.LogPingu.log
+import xyz.malefic.frc.pingu.LogPingu.logs
 import kotlin.math.abs
 
 /** Command to control the robot's swerve drive using a Logitech gaming pad.  */
