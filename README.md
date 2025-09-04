@@ -17,9 +17,11 @@ This repository contains the code for the FRC Team 4079's 2025 robot, named "Nau
 
 The project relies on several dependencies, including:
 
+Robot:
 - WPILib
 - CTRE Phoenix
 - GradleRIO
+Non-Robot:
 - Spotless
 - Dokka
 
